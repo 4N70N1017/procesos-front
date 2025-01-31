@@ -1,20 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-my-form', // Asegúrate de que el selector sea correcto
+  selector: 'app-my-form',
   templateUrl: './my-form.component.html',
   styleUrls: ['./my-form.component.css'],
 })
-export class MyFormComponent {
-  onButton1Click() {
-    console.log('Button 1 clicked');
+export class MyFormComponent implements OnInit {
+  inputData1: string = '';
+  inputData2: string = '';
+  inputData3: string = '';
+  pids: number[] = [];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+    this.loadData();
   }
 
-  onButton2Click() {
-    console.log('Button 2 clicked');
-  }
+  loadData(): void {
+    this.dataService.startLoops().subscribe((data) => {
+      this.inputData1 = data;
+    });
 
-  onButton3Click() {
-    console.log('Button 3 clicked');
+    this.dataService.getIteration(1).subscribe((data) => {
+      this.inputData2 = data;
+    });
+
+    this.dataService.getPIDs().subscribe((data) => {
+      this.pids = data;
+    });
   }
 }
