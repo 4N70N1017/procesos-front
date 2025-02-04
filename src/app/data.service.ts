@@ -3,22 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://localhost:3000/native'; // Reemplaza con la URL de tu backend
+  private baseUrl = 'http://localhost:3000/native';
 
   constructor(private http: HttpClient) {}
 
-  startLoops(): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/startLoops`);
+  startLoops(): Observable<{ message: string }> {
+    return this.http.get<{ message: string }>(`${this.baseUrl}/start-loops`);
   }
 
-  getIteration(loopNumber: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/iteration/${loopNumber}`);
+  getIteration(loopNumber: number): Observable<{ iteration: number, threadId: string, pid: number }> {
+    return this.http.get<{ iteration: number, threadId: string, pid: number }>(`${this.baseUrl}/iteration/${loopNumber}`);
   }
 
   getPIDs(): Observable<number[]> {
-    return this.http.get<number[]>(`${this.apiUrl}/pids`);
+    return this.http.get<number[]>(`${this.baseUrl}/pids`);
   }
 }

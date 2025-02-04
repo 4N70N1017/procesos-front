@@ -1,73 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Native Module</title>
-    <script>
-      async function startLoops() {
-        try {
-          const response = await fetch(
-            "http://localhost:3000/native/startLoops"
-          );
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const result = await response.text();
-          document.getElementById("status").innerText = result;
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-
-      async function getPIDs() {
-        try {
-          const response = await fetch("http://localhost:3000/native/pids");
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const result = await response.json();
-          document.getElementById("pids").innerText = JSON.stringify(result);
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-
-      async function getIteration(loopNumber) {
-        try {
-          const response = await fetch(
-            `http://localhost:3000/native/iteration/${loopNumber}`
-          );
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          const result = await response.text();
-          document.getElementById(`iteration${loopNumber}`).innerText = result;
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Native Module</h1>
-    <button onclick="startLoops()">Start Loops</button>
-    <p id="status"></p>
-    <button onclick="getPIDs()">Get PIDs</button>
-    <p id="pids"></p>
+<div>
+  <h1>Backend Data</h1>
+  <button (click)="startLoops()">Start Loops</button>
+  <p>{{ message }}</p>
+  <button (click)="getPIDs()">Get PIDs</button>
+  <p>PIDs: {{ pids.join(', ') }}</p>
+  <div>
+    <h2>Iterations</h2>
     <div>
-      <h2>Iterations</h2>
-      <div>
-        <button onclick="getIteration(1)">Get Iteration 1</button>
-        <p id="iteration1"></p>
-      </div>
-      <div>
-        <button onclick="getIteration(2)">Get Iteration 2</button>
-        <p id="iteration2"></p>
-      </div>
-      <div>
-        <button onclick="getIteration(3)">Get Iteration 3</button>
-        <p id="iteration3"></p>
-      </div>
+      <button (click)="getIteration(1)">Get Iteration 1</button>
+      <p>Loop 1: Thread ID: {{ iteration1.threadId }}, PID: {{ iteration1.pid }}, Iteration: {{ iteration1.iteration }}</p>
     </div>
-  </body>
-</html>
+    <div>
+      <button (click)="getIteration(2)">Get Iteration 2</button>
+      <p>Loop 2: Thread ID: {{ iteration2.threadId }}, PID: {{ iteration2.pid }}, Iteration: {{ iteration2.iteration }}</p>
+    </div>
+    <div>
+      <button (click)="getIteration(3)">Get Iteration 3</button>
+      <p>Loop 3: Thread ID: {{ iteration3.threadId }}, PID: {{ iteration3.pid }}, Iteration: {{ iteration3.iteration }}</p>
+    </div>
+  </div>
+</div>

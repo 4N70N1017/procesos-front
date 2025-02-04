@@ -4,31 +4,42 @@ import { DataService } from '../data.service';
 @Component({
   selector: 'app-my-form',
   templateUrl: './my-form.component.html',
-  styleUrls: ['./my-form.component.css'],
+  styleUrls: ['./my-form.component.css']
 })
 export class MyFormComponent implements OnInit {
-  inputData1: string = '';
-  inputData2: string = '';
-  inputData3: string = '';
+  message: string = '';
+  iteration1: { iteration: number, threadId: string, pid: number } = { iteration: 0, threadId: '', pid: 0 };
+  iteration2: { iteration: number, threadId: string, pid: number } = { iteration: 0, threadId: '', pid: 0 };
+  iteration3: { iteration: number, threadId: string, pid: number } = { iteration: 0, threadId: '', pid: 0 };
   pids: number[] = [];
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.loadData();
+    this.getPIDs();
   }
 
-  loadData(): void {
-    this.dataService.startLoops().subscribe((data) => {
-      this.inputData1 = data;
+  startLoops(): void {
+    this.dataService.startLoops().subscribe(response => {
+      this.message = response.message;
     });
+  }
 
-    this.dataService.getIteration(1).subscribe((data) => {
-      this.inputData2 = data;
+  getIteration(loopNumber: number): void {
+    this.dataService.getIteration(loopNumber).subscribe(response => {
+      if (loopNumber === 1) {
+        this.iteration1 = response;
+      } else if (loopNumber === 2) {
+        this.iteration2 = response;
+      } else if (loopNumber === 3) {
+        this.iteration3 = response;
+      }
     });
+  }
 
-    this.dataService.getPIDs().subscribe((data) => {
-      this.pids = data;
+  getPIDs(): void {
+    this.dataService.getPIDs().subscribe(response => {
+      this.pids = response;
     });
   }
 }
