@@ -16,7 +16,7 @@ h2 {
 }
 
 button {
-  background-color: #003cff;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -27,7 +27,7 @@ button {
 }
 
 button:hover {
-  background-color: #003cff;
+  background-color: #007bff;
 }
 
 p {
@@ -66,11 +66,13 @@ p {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #333;
 }
 
-.primary-button, .secondary-button {
+.primary-button,
+.secondary-button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -81,8 +83,9 @@ h1, h2 {
   font-size: 16px;
 }
 
-.primary-button:hover, .secondary-button:hover {
-  background-color: #0056b3;
+.primary-button:hover,
+.secondary-button:hover {
+  background-color: #007bff;
 }
 
 .iteration-container {

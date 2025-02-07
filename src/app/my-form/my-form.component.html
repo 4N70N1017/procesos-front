@@ -17,6 +17,11 @@
       <progress [value]="iteration1.progress" max="100"></progress>
       <p>Progreso: {{ iteration1.progress }}%</p>
     </div>
+    <div>
+      <button class="pause-button">Pausar</button>
+      <button class="restart-button">Reiniciar</button>
+      <button class="continue-button">Continuar</button>
+    </div>
     <div class="iteration-container">
       <button class="secondary-button" (click)="getIteration(2)">
         Obtener Iteration 2
@@ -27,6 +32,11 @@
       </p>
       <progress [value]="iteration2.progress" max="100"></progress>
       <p>Progreso: {{ iteration2.progress }}%</p>
+    </div>
+    <div>
+      <button class="pause-button">Pausar</button>
+      <button class="restart-button">Reiniciar</button>
+      <button class="continue-button">Continuar</button>
     </div>
     <div class="iteration-container">
       <button class="secondary-button" (click)="getIteration(3)">
@@ -39,5 +49,10 @@
       <progress [value]="iteration3.progress" max="100"></progress>
       <p>Progreso: {{ iteration3.progress }}%</p>
     </div>
+  </div>
+  <div>
+    <button class="pause-button">Pausar</button>
+    <button class="restart-button">Reiniciar</button>
+    <button class="continue-button">Continuar</button>
   </div>
 </div>
