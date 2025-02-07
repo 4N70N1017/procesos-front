@@ -8,6 +8,9 @@
     <h2>Iteraciones</h2>
     <div class="iteration-container">
       <button class="secondary-button" (click)="getIteration(1)">Obtener Iteration 1</button>
+      <button class="secondary-button" (click)="resetIteration(1)">Resetear Iteration 1</button>
+      <button class="secondary-button" (click)="pauseIteration(1)">Pausar Iteration 1</button>
+      <button class="secondary-button" (click)="resumeIteration(1)">Reanudar Iteration 1</button>
       <p>
         Ciclo 1: Thread ID: {{ iteration1.threadId }}, PID:
         {{ iteration1.pid }}, Iteration: {{ iteration1.iteration }}
@@ -17,6 +20,9 @@
     </div>
     <div class="iteration-container">
       <button class="secondary-button" (click)="getIteration(2)">Obtener Iteration 2</button>
+      <button class="secondary-button" (click)="resetIteration(2)">Resetear Iteration 2</button>
+      <button class="secondary-button" (click)="pauseIteration(2)">Pausar Iteration 2</button>
+      <button class="secondary-button" (click)="resumeIteration(2)">Reanudar Iteration 2</button>
       <p>
         Ciclo 2: Thread ID: {{ iteration2.threadId }}, PID:
         {{ iteration2.pid }}, Iteration: {{ iteration2.iteration }}
@@ -26,6 +32,9 @@
     </div>
     <div class="iteration-container">
       <button class="secondary-button" (click)="getIteration(3)">Obtener Iteration 3</button>
+      <button class="secondary-button" (click)="resetIteration(3)">Resetear Iteration 3</button>
+      <button class="secondary-button" (click)="pauseIteration(3)">Pausar Iteration 3</button>
+      <button class="secondary-button" (click)="resumeIteration(3)">Reanudar Iteration 3</button>
       <p>
         Ciclo 3: Thread ID: {{ iteration3.threadId }}, PID:
         {{ iteration3.pid }}, Iteration: {{ iteration3.iteration }}

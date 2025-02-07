@@ -21,4 +21,15 @@ export class DataService {
   getPIDs(): Observable<number[]> {
     return this.http.get<number[]>(`${this.baseUrl}/pids`);
   }
+  resetIteration(loopNumber: number): Observable<string> {
+    return this.http.put<string>(`${this.baseUrl}/reset-iteration`, { loopNumber });
+  }
+
+  pauseIteration(loopNumber: number): Observable<{ message: string }> {
+    return this.http.get<{ message: string }>(`${this.baseUrl}/pause/${loopNumber}`);
+  }
+
+  resumeIteration(loopNumber: number): Observable<{ message: string }> {
+    return this.http.get<{ message: string }>(`${this.baseUrl}/resume/${loopNumber}`);
+  }
 }

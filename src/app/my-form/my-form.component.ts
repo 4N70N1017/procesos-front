@@ -47,4 +47,23 @@ export class MyFormComponent implements OnInit {
   private calculateProgress(iteration: number): number {
     return Math.min((iteration / this.maxIterations) * 100, 100);
   }
+
+  resetIteration(loopNumber: number): void {
+    this.dataService.resetIteration(loopNumber).subscribe(response => {
+      console.log(response);
+      this.getIteration(loopNumber); // Refresh iteration data
+    });
+  }
+
+  pauseIteration(loopNumber: number): void {
+    this.dataService.pauseIteration(loopNumber).subscribe(response => {
+      console.log(response.message);
+    });
+  }
+
+  resumeIteration(loopNumber: number): void {
+    this.dataService.resumeIteration(loopNumber).subscribe(response => {
+      console.log(response.message);
+    });
+  }
 }
